@@ -1,0 +1,77 @@
+﻿<h2>Видео</h2>
+
+@*<div>
+    Выбрать жанр:
+        <select></select>
+</div>
+<div>
+    Выбрать автора:<select></select>
+</div>*@
+
+<div id="loader">
+    Пожалуйста, подождите, загружаю данные <img src="~/Content/images/loader.gif" />
+</div>
+<div id="table" style="width:auto;display:none;">
+    <table class="table table-condensed" id="video">
+        <thead>
+            <tr>
+                <td>Название видео</td>
+                <td>Дата премьеры</td>
+                <td>Режиссёр</td>
+                <td>Жанр</td>
+                <td style="width:auto">Действия</td>
+            </tr>
+        </thead>
+        <tbody id="videoBody" data-bind="foreach: { data: Videos, afterAdd: datepicker }">
+            <tr class="text">
+                <td>
+                    <span data-bind="text: Title"></span></></td>
+                <td>
+                    <span data-bind="text: DatePremiere"></span></td>
+                <td>
+                    <span data-bind="text: author"></span></td>
+                <td>
+                    <span data-bind="text: genre"></span></td>
+                <td>
+                    <button class="btn btn-primary" data-bind="click: $parent.editRow">Редактировать</button>
+                    <button class="btn btn-danger" data-bind="click: $parent.removeRow">Удалить</button></td>
+            </tr>
+            <tr class="edit" style="display: none;">
+                <td>
+                    <input data-bind="value: Title" /></></td>
+                <td>
+                    <input class="date" data-bind="value: DatePremiere" /></td>
+                <td>
+                    <select data-bind="options: $parent.Authors, optionValue: 'AuthorID', optionsText: 'FirstName', value: AuthorID"></select></td>
+                <td>
+                    <select data-bind="options: $parent.Genres, optionValue: 'GenreID', value: GenreID, optionsText: 'KindGenre'"></select></td>
+                <td>
+                    <button class="btn" data-bind="click: $parent.updateRow">Обновить</button>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" data-bind="click: createRow">Создать</button>
+</div>
+
+<table id="createTable" style="display: none;">
+    <tbody>
+        <tr class="NewRow">
+            <td>
+                <input class="input-small" id="Title" type="text" /></td>
+            <td>
+                <input class="input-small" id="DatePrimiere" class="" type="text" /></td>
+            <td>
+                <select id="AuthorID" data-bind="options: Authors, optionsValue: 'AuthorID', optionsText: 'FirstName'"></select>
+            </td>
+            <td>
+                <select id="GenreID" data-bind="options: Genres, optionsValue: 'GenreID', optionsText: 'KindGenre'"></select>
+            </td>
+            <td>
+                <button class="btn btn-primary add">Добавить</button>
+                <button class="btn btn-danger" id="cancel">Отменить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="@Url.Content("~/Scripts/ViewModels/VideoViewModel.js")" type="text/javascript"></script>

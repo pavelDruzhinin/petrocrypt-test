@@ -1,0 +1,41 @@
+﻿body {
+}
+
+table, table tr, table thead td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+    font-weight: 900;
+}
+
+    table tbody td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0px;
+    }
+
+        table tbody td input {
+            border: none;
+            text-align: center;
+            height: 35px;
+        }
+
+        table tbody td select {
+            border: none;
+            text-align: center;
+            height: 35px;
+            width: 100%;
+        }
+
+.ui-datepicker {
+    width: 12em !important;
+    padding: .2em .2em 0 !important;
+}
+
+    .ui-datepicker table {
+        width: 100% !important;
+        font-size: .7em !important;
+        border-collapse: collapse !important;
+        margin: 0 0 .4em !important;
+    }
